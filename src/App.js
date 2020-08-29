@@ -1,9 +1,11 @@
 import React from 'react';
+import { BrowserRouter as Router } from 'react-router-dom'
+import Routes from './routes'
 
 const App = () => (
-	<div className="container">
-		<h1>Bem-vindo ao José Entregas ;)!</h1>
-	</div>
+	<Router>
+		<Routes />
+	</Router>
 );
 
 export default App;
