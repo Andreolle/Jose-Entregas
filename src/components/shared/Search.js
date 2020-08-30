@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import MapPinIcon from '../svg/map-pin';
 import SearchIcon from '../svg/search';
+import ArrowBack from '../svg/arrow-back';
 import searchImage from '../../assets/images/product-not-found.png';
 import addressImage from '../../assets/images/not-found.png';
 
 const SearchInput = (props) => {
-	const { type } = props;
-	const [searchTerm, setSearchTerm] = useState(null);
+	const { type, placeholder } = props;
+	const [searchTerm, setSearchTerm] = useState('');
+	const [isActive, setActive] = useState(false);
 	const [results, setResults] = useState(null);
 	const [config, setConfig] = useState({ icon: {}, notFound: {} });
 	const { icon, notFound } = config;
@@ -15,7 +17,7 @@ const SearchInput = (props) => {
 		const types = {
 			products: {
 				icon: {
-					image: <MapPinIcon/>,
+					image: <SearchIcon/>,
 				},
 				notFound: {
 					image: searchImage,
@@ -26,7 +28,7 @@ const SearchInput = (props) => {
 			},
 			address: {
 				icon: {
-					image: <SearchIcon/>,
+					image: <MapPinIcon/>,
 				},
 				notFound: {
 					image: addressImage,
@@ -40,6 +42,22 @@ const SearchInput = (props) => {
 		setConfig(types[searchType]);
 	};
 
+	const backHandle = () => {
+		setActive(false);
+		setSearchTerm('');
+	};
+
+	const searchHandle = (term) => {
+		const { value: searchedTerm } = term;
+		if (searchedTerm.length !== 0) {
+			setActive(true);
+		} else {
+			setActive(false)
+		}
+
+		setSearchTerm(searchedTerm);
+	};
+
 	useEffect(() => {
     typeHandle(type);
 	}, []);
@@ -48,15 +66,20 @@ const SearchInput = (props) => {
 		<div className="search">
 			<div className="search__input">
 				<div className="icon">
-					{icon.image}
+					{ isActive
+						? (<ArrowBack onClick={() => backHandle()} className="back" />)
+						: icon.image
+					}
 				</div>
 				<input
-					placeholder="Insera seu endereço para ver preço"
+					onChange={({ target }) => searchHandle(target)}
+					placeholder={placeholder}
+					value={searchTerm}
 					className="input"
 					type="text"
 				/>
 			</div>
-			<div className="search__results">
+			<div className={isActive ? 'search__results active' : 'search__results'}>
 				{
 					results ? (
 						<div className="results">
@@ -69,7 +92,13 @@ const SearchInput = (props) => {
 								alt={notFound.alt}
 								style={{maxWidth: notFound.maxWidth}}
 							/>
-							<p>{notFound.message} <strong>{searchTerm}</strong></p>
+							<p>{notFound.message}
+								<strong>
+								{
+									type !== 'address' && searchTerm
+								}
+								</strong>
+							</p>
 						</div>
 					)
 				}
@@ -79,7 +108,8 @@ const SearchInput = (props) => {
 };
 
 SearchInput.defaultProps = {
-	type: 'products'
+	type: 'products',
+	placeholder: '',
 };
 
 export default SearchInput;

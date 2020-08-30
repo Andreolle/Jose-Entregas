@@ -13,7 +13,14 @@
 		.icon {
 			display: flex;
 			width: 4em;
-    	justify-content: center;
+			justify-content: center;
+			fill: #666;
+			.back {
+				cursor: pointer;
+				&:hover {
+					fill: #FFC500;
+				}
+			}
 		}
 		.input {
 			padding: 1em 1em 1em 0;
@@ -33,11 +40,11 @@
 		padding: 2em;
 		box-shadow: 10px 10px 15px -10px rgba(0,0,0,0.75);
 		opacity: 0;
-		transition: opacity ease-in-out .7s;
+		transition: all ease-in-out .6s;
 		z-index: -1;
 		&.active {
 			opacity: 1;
-			z-index: 2;
+			z-index: 1;
 		}
 		.not-found {
 			text-align: center;
