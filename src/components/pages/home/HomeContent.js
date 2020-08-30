@@ -8,7 +8,7 @@ const HomeContent = () => (
 				<h1>
 					<strong>Bebidas geladas </strong> a <strong>preço </strong>de mercado na sua casa <strong>agora</strong>
 				</h1>
-				<Search />
+				<Search type="address" />
 			</div>
 		</div>
 	</div>
