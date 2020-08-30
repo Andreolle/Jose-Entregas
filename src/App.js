@@ -1,11 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom'
-import Routes from './routes'
+import { ApolloProvider } from '@apollo/client';
+import Routes from './routes';
+import client from './services/apollo';
 
 const App = () => (
-	<Router>
+	<ApolloProvider client={client}>
 		<Routes />
-	</Router>
+	</ApolloProvider>
 );
 
 export default App;

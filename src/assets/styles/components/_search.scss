@@ -1,0 +1,22 @@
+.search {
+	&__input {
+		display: flex;
+		background: $white;
+		box-sizing: border-box;
+		border-radius: .5em;
+		border: 1px solid rgb(204, 204, 204);
+		overflow: hidden;
+		.icon {
+			display: flex;
+			width: 4em;
+    	justify-content: center;
+		}
+		.input {
+			padding: 1em 1em 1em 0;
+			font-size: 1em;
+			outline: none;
+			width: 100%;
+			border: 0;
+		}
+	}
+}

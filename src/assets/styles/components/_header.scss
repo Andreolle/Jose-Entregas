@@ -1,0 +1,12 @@
+.header {
+	position: fixed;
+	background: $background;
+	color: $white;
+	height: $headerHeight;
+	width: 100%;
+	.content {
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+}

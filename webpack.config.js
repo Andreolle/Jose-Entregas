@@ -25,12 +25,46 @@ module.exports = {
 			},
 			{
 				test:/\.s?css$/,
-				use:['style-loader','css-loader', 'sass-loader']
+				use:[
+					'style-loader',
+					'css-loader',
+					{
+						loader: 'resolve-url-loader',
+						options: {
+							removeCR: true,
+							sourceMap: true
+						}
+					},
+					{
+						loader: 'sass-loader',
+						options: {
+							implementation: require('sass'),
+							sourceMap: true,
+              sassOptions: {
+                fiber: require('fibers'),
+              },
+            },
+					}
+				]
 			},
 			{
-				test: /\.(png|svg|jpg|gif)$/,
+				test: /\.(png|svg|jpg|jpeg|gif)$/,
+				use: [{
+					loader: 'file-loader'
+				}]
+			},
+			{
+				test: /\.svg$/,
 				use: [
-				'file-loader'
+					{
+						loader: "babel-loader"
+					},
+					{
+						loader: "react-svg-loader",
+						options: {
+							jsx: true
+						}
+					}
 				]
 			}
 		]
