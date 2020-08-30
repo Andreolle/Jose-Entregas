@@ -1,6 +1,6 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
-import Routes from './routes';
+import Routes from './components/Routes';
 import client from './services/apollo';
 
 const App = () => (

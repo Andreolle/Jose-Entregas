@@ -1,5 +1,5 @@
 import React from 'react';
-import MapPinIcon from './svg/map-pin';
+import MapPinIcon from '../svg/map-pin';
 
 const SearchInput = () => (
 	<div className="search">
