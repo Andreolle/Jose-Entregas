@@ -1,3 +1,4 @@
+require('dotenv').config()
 import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 import Routes from './components/Routes';
