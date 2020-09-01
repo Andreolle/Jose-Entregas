@@ -87,7 +87,7 @@ const SearchInput = (props) => {
 				} else {
 					setActive(false)
 				}
-			}, 1000)
+			}, 700)
 		);
 
 		setSearchTerm(value);
@@ -114,36 +114,42 @@ const SearchInput = (props) => {
 					type="text"
 				/>
 			</div>
-			<div className={isActive ? 'search__results active' : 'search__results'}>
-				{
-					results.length !== 0 ? (
-						<div className="results">
-							{
-								results.map(({ address }, i) => {
-									return (
-										<p key={i}>{address}</p>
-									)
-								})
-							}
-						</div>
-					) : (
-						<div className="not-found">
-							<img
-								src={notFound.image}
-								alt={notFound.alt}
-								style={{maxWidth: notFound.maxWidth}}
-							/>
-							<p>{notFound.message}
-								<strong>
-								{
-									type !== 'address' && searchTerm
-								}
-								</strong>
-							</p>
-						</div>
-					)
-				}
-			</div>
+
+			{
+				searchTerm.length !== 0 && (
+					<div className={isActive ? 'search__results active' : 'search__results'}>
+						{
+							results.length !== 0 ? (
+								<div className="results">
+									{
+										results.map(({ address }, i) => {
+											return (
+												<p key={i}>{address}</p>
+											)
+										})
+									}
+								</div>
+							) : (
+								<div className="not-found">
+									<img
+										src={notFound.image}
+										alt={notFound.alt}
+										style={{maxWidth: notFound.maxWidth}}
+									/>
+									<p>{notFound.message}
+										<strong>
+										{
+											type !== 'address' && searchTerm
+										}
+										</strong>
+									</p>
+								</div>
+							)
+						}
+					</div>
+				)
+			}
+
 		</div>
 	)
 };

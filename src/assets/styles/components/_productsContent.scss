@@ -1,0 +1,8 @@
+.products-content {
+	background: $lightGray;
+	min-height: calc(100vh - #{$headerHeight + $footerHeight});
+	padding-top: $headerHeight;
+	.container {
+		margin-top: 3em;
+	}
+}

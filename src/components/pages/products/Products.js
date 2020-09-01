@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from '../../shared/Header';
+import ProductsContent from './ProductsContent';
 import shortLogo from '../../../assets/images/logo.png';
 
 const headerConfig = {
@@ -14,7 +15,7 @@ const headerConfig = {
 const Products = () => (
 	<>
 		<Header config={headerConfig} />
-		<h1>Products</h1>
+		<ProductsContent />
 	</>
 );
 

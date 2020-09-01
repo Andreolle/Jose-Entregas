@@ -1,4 +1,7 @@
-@import './header';
-@import './footer';
+@import './shared/header';
+@import './shared/footer';
+@import './shared/search';
+@import './shared/shelf';
 @import './homeContent';
-@import './search';
+@import './productsContent';
+@import './productCard';
