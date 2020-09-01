@@ -1,9 +1,12 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import Search from '../shared/Search';
+import Cart from '../shared/Cart';
+import CartIcon from '../svg/cart';
 
 const Header = (props) => {
 	const history = useHistory();
+	const { pathname } = useLocation();
 	const { config } = props;
 
 	return (
@@ -22,6 +25,7 @@ const Header = (props) => {
 						</div>
 					)
 				}
+				{ pathname !== '/' && ( <Cart /> )}
 			</div>
 		</header>
 	)

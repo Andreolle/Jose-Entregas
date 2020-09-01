@@ -17,8 +17,11 @@
 	}
 	&__search {
 		position: relative;
-		flex: 1;
+		flex: 3;
 		margin-left: 5em;
 		max-width: 550px;
+		@media screen and (max-width: 620px) {
+			margin-left: .8em;
+		}
 	}
 }
