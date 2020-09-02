@@ -1,11 +1,31 @@
-import React from 'react';
-import CartIcon from '../svg/cart';
+import React, { useState } from 'react';
+import ProductCard from '../shared/ProductCard'
+import Close from '../svg/close';
 
-const Header = (props) => (
-	<div className="cart">
-		<div className="cart__counter">0</div>
-		<CartIcon className="cart__icon" />
-	</div>
-);
+const Cart = (props) => {
+	const [isOpen, setOpen] = useState(true);
 
-export default Header;
+	return (
+		<aside className={isOpen ? 'cart cart--open': 'cart'}>
+			<div className="cart__header">
+				<span className="title">Meu Carrinho</span>
+				<Close
+					className="close-btn"
+					onClick={() => setOpen(false)}/>
+			</div>
+			<div className="cart__content">
+				<ProductCard mode="cart" />
+				<ProductCard mode="cart" />
+				<ProductCard mode="cart" />
+				<ProductCard mode="cart" />
+				<ProductCard mode="cart" />
+			</div>
+			<div className="cart__total">
+				<span>Total a pagar:</span>
+				<strong className="total-amount">R$ 9,50</strong>
+			</div>
+		</aside>
+	)
+};
+
+export default Cart;
